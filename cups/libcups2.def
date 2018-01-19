@@ -54,6 +54,7 @@ _cupsStrScand
 _cupsStrStatistics
 _cupsThreadCancel
 _cupsThreadCreate
+_cupsThreadDetach
 _cupsThreadWait
 _cupsUserDefault
 _cups_safe_vsnprintf

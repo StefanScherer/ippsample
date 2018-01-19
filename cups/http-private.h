@@ -175,6 +175,10 @@ extern "C" {
 #  define _HTTP_TLS_ALLOW_RC4	1	/* Allow RC4 cipher suites */
 #  define _HTTP_TLS_ALLOW_DH	2	/* Allow DH/DHE key negotiation */
 #  define _HTTP_TLS_DENY_CBC	4	/* Deny CBC cipher suites */
+
+#  define _HTTP_TLS_DENY_TLS10 8
+#  define _HTTP_TLS_ALLOW_SSL3 16
+
 #  define _HTTP_TLS_SET_DEFAULT 128     /* Setting the default TLS options */
 
 #  define _HTTP_TLS_SSL3	0	/* Min/max version is SSL/3.0 */

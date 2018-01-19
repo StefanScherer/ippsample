@@ -1,0 +1,18 @@
+FROM stefanscherer/msbuild
+
+WORKDIR /code
+
+RUN powershell -Command \
+    Invoke-WebRequest -UseBasicParsing -OutFile zlib.zip https://github.com/madler/zlib/archive/v1.2.11.zip ; \
+    Expand-Archive zlib.zip -DestinationPath . ; \
+    rm zlib.zip ; \
+    mv zlib-1.2.11 zlib
+RUN cd /code/zlib/contrib/vstudio/vc14 & \
+    msbuild.exe zlibvc.sln /p:Configuration=ReleaseWithoutAsm /p:Platform=x64 /p:PlatformToolset=v140
+  
+RUN setx /M PATH C:\code\zlib\contrib\vstudio\vc14\x64\ZlibDllReleaseWithoutAsm;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\ContainerAdministrator\AppData\Local\Microsoft\WindowsApps
+
+COPY . /code/ippsample/
+
+RUN msbuild ippsample\vcnet\ippsample.sln /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v140 /target:ippserver
+

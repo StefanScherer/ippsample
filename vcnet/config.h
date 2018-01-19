@@ -294,7 +294,7 @@ typedef unsigned long useconds_t;
  * Do we have mDNSResponder for DNS Service Discovery (aka Bonjour)?
  */
 
-#define HAVE_DNSSD 1
+#undef HAVE_DNSSD
 
 
 /*
