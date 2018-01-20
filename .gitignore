@@ -24,3 +24,7 @@ xcuserdata
 *.snap
 *.xcworkspace
 .vagrant/
+vcnet/x64/
+*.pdb
+*.suo
+vcnet/.vs/
